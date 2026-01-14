@@ -1,0 +1,48 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =====================
+# Models (CRITICAL)
+# =====================
+*.gguf
+*.bin
+*.safetensors
+/models/
+checkpoints/
+
+# =====================
+# Vector DB / Storage
+# =====================
+storage/
+*.index
+*.faiss
+*.pkl
+
+# =====================
+# Uploaded / temp files
+# =====================
+tmp/
+uploads/
+data/
+
+# =====================
+# Docker
+# =====================
+*.log
+eval.json

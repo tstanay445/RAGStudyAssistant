@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+faiss-cpu
+sentence-transformers
+rank-bm25
+nltk
+numpy
+pydantic
+ctransformers
+gradio
+regex
