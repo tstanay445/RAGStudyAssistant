@@ -4,6 +4,7 @@ A local, production-style Retrieval-Augmented Generation (RAG) system designed f
 The project emphasizes **retrieval quality, grounding, and evaluation**, not just LLM responses.
 
 ---
+
 ## 🧠 Architecture
 
 ```mermaid
