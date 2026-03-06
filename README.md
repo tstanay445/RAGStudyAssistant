@@ -14,25 +14,25 @@ A[User Question] --> B[FastAPI Backend]
 
 B --> C[Query Processing]
 
-C --> D1[Dense Retrieval<br>FAISS + BGE Embeddings]
-C --> D2[Keyword Retrieval<br>BM25]
+C --> D1[Dense Retrieval FAISS BGE Embeddings]
+C --> D2[Keyword Retrieval BM25]
 
 D1 --> E[Candidate Merge]
 D2 --> E
 
-E --> F[Cross Encoder Reranking<br>ms-marco-MiniLM-L-6-v2]
+E --> F[Cross Encoder Reranking MiniLM]
 
-F --> G[Top-K Context Selection]
+F --> G[Top K Context Selection]
 
 G --> H[Grounded Prompt Construction]
 
-H --> I[Local LLM Inference<br>GGUF via ctransformers]
+H --> I[Local LLM Inference GGUF ctransformers]
 
 I --> J[Generated Answer]
 
 J --> K[Gradio UI Response]
 
-subgraph Data Layer
+subgraph Data_Layer
 L[Document Chunks]
 M[FAISS Vector Index]
 N[BM25 Index]
@@ -41,10 +41,10 @@ end
 L --> M
 L --> N
 
-subgraph Evaluation Pipeline
+subgraph Evaluation_Pipeline
 O[Evaluation Dataset]
-P[Retriever]
-Q[Recall@K Metrics]
+P[Retriever Evaluation]
+Q[Recall at K Metrics]
 end
 
 O --> P
