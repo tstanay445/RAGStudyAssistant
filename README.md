@@ -4,6 +4,51 @@ A local, production-style Retrieval-Augmented Generation (RAG) system designed f
 The project emphasizes **retrieval quality, grounding, and evaluation**, not just LLM responses.
 
 ---
+## 🧠 Architecture
+
+```mermaid
+flowchart TD
+
+A[User Question] --> B[FastAPI Backend]
+
+B --> C[Query Processing]
+
+C --> D1[Dense Retrieval<br>FAISS + BGE Embeddings]
+C --> D2[Keyword Retrieval<br>BM25]
+
+D1 --> E[Candidate Merge]
+D2 --> E
+
+E --> F[Cross Encoder Reranking<br>ms-marco-MiniLM-L-6-v2]
+
+F --> G[Top-K Context Selection]
+
+G --> H[Grounded Prompt Construction]
+
+H --> I[Local LLM Inference<br>GGUF via ctransformers]
+
+I --> J[Generated Answer]
+
+J --> K[Gradio UI Response]
+
+subgraph Data Layer
+L[Document Chunks]
+M[FAISS Vector Index]
+N[BM25 Index]
+end
+
+L --> M
+L --> N
+
+subgraph Evaluation Pipeline
+O[Evaluation Dataset]
+P[Retriever]
+Q[Recall@K Metrics]
+end
+
+O --> P
+P --> Q
+```
 
 ## 🔹 Features
 
@@ -18,26 +63,6 @@ The project emphasizes **retrieval quality, grounding, and evaluation**, not jus
 - FastAPI backend
 - Gradio UI
 - Offline retrieval evaluation (Recall@K)
-
----
-
-## 🧠 Architecture
-
-**Pipeline:**
-
-User Question  
-↓  
-Dense Retrieval (FAISS) + Keyword Retrieval (BM25)  
-↓  
-Candidate Merge  
-↓  
-Cross-Encoder Reranking  
-↓  
-Top-K Context Selection  
-↓  
-Grounded Prompt → Local LLM
-
-
 
 ---
 
